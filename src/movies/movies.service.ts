@@ -1,5 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { Movie } from './entities/movie.entity';
+import { CreateMovieDTO } from './dto/create-movie.dto';
 import { UpdateMovieDTO } from './dto/update-movie.dto';
 
 @Injectable()
@@ -23,7 +24,7 @@ export class MoviesService {
     this.movies = this.movies.filter((movie) => movie.id !== id);
   }
 
-  create(movieData) {
+  create(movieData: CreateMovieDTO) {
     this.movies.push({
       id: this.movies.length + 1,
       ...movieData,
